@@ -30,6 +30,9 @@ The K-S statistic ranges from 0 to 1, and higher values indicate better model pe
 
 ## Model Evaluation Criteria
 
+A general turle of thumb is:
+
+
 | Criteria                             | Assesment                               |
 |--------------------------------------|:----------------------------------------|
 | GINI < 20 y K-S < 16                 | Bad. Model barely discriminates classes |
