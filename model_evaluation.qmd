@@ -1,0 +1,41 @@
+# Model Evaluation
+
+## Classification Models Metrics
+
+### Binary Models
+
+#### Prediction Scores
+
+##### Kolgomorov-Smirnov Statistic (K-S Statistic) (See @kelleher20)
+
+To calculate the K-S statistic, we first determine the cumulative probability distributionof the prediciotn scores for the positive and negative target levels. This is done as follows:
+$$
+CP(positive,ps) = \frac{num positive test instances with score \leq ps}{num positive test instances}
+$$
+
+$$
+CP(negative,ps) = \frac{num negative test instances with score \leq ps}{num negative test instances}
+$$
+
+where $ps$ is a prediction score value, $CP(positive, ps)$ is the cumulative probability distribution of positive value scores, and $CP(negative, ps)$ is the cumulative probability of negative value scores.
+
+The K-S statistic is calculated by determining the maximum difference between the cumulative probability distributions for the positive and negative target labels. This can be written formally as
+$$
+\begin{equation}
+K-S = \max_{ps} \left( CP(positive,ps) - CP(negative,ps) \right)
+\end{equation}
+$$ {#eq-ks}
+
+The K-S statistic ranges from 0 to 1, and higher values indicate better model performance, reflecting the fact there is a clear distinction between the distribution of the scores predicted by the model for the negative and positive instances.
+
+## Model Evaluation Criteria
+
+| Criteria                             | Assesment                               |
+|--------------------------------------|:----------------------------------------|
+| GINI < 20 y K-S < 16                 | Bad. Model barely discriminates classes |
+| 20 &le; GINI < 30 y 16 &le; K-S < 24 | Regular                                 |
+| 30 &le; GINI < 40 y 24 &le; K-S < 32 | Good                                    |
+| 40 &le; GINI < 50 y 32 &le; K-S < 40 | Very good                               |
+| GINI &ge; 50 y K-S &ge; 40           | Excellent                               |
+
+: Binary classification model evaluation criteria
